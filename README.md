@@ -1,6 +1,6 @@
 # Licence-Plate-Detection
 The code is an approach to Detect licence plate of Indian vehicles with extensive use of Machine Learning Algorithms and Image Processing
-The Data for the Detection is however not provided due to security reasons. 
+The Data-set is however not provided due to security reasons. 
 
 The code is quite straight forward, 
 
