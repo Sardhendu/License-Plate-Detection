@@ -16,20 +16,22 @@ About: The below code is the HOG class that instantiates HOG. HOG is used to cre
 
 
 
-from skimage import feature
+from skimage.feature import hog
 
 class HOG:
-    def __init__(self, orientations = 9, pixelsPerCell = (8, 8),cellsPerBlock = (3, 3), normalize = False):
+    def __init__(self, orientations = 9, pixelsPerCell = (8, 8),cellsPerBlock = (3, 3), visualise=False, normalize = False): 
         self.orienations = orientations
         self.pixelsPerCell = pixelsPerCell
         self.cellsPerBlock = cellsPerBlock
+        self.visualise = visualise
         self.normalize = normalize
 
     def describe(self, image):
-        hist = feature.hog(image,
+        hist , hog_image= hog(image,
                             orientations = self.orienations,
                             pixels_per_cell = self.pixelsPerCell,
                             cells_per_block = self.cellsPerBlock,
-                            normalise = self.normalize)
+                            visualise= self.visualise,
+                            normalise = self.normalize)  
 
-        return hist
+        return hist, hog_image
