@@ -15,6 +15,9 @@ For extraction of digits we would have to perform blurr and then canny edge dete
 '''
 
 import cv2
+import sys
+sys.path.insert(0, 'C:\\Users\\sardhendu_mishra\\Desktop\\StudyHard\\Machine_learning\\Data mining and analysis\\image_processing')
+import imutils
 
 def return_all_contours_in_image(image_to_classify):
 
@@ -29,7 +32,7 @@ def return_all_contours_in_image(image_to_classify):
     (cnts, _) = cv2.findContours(image_edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     cv2.drawContours(image_gray, cnts, -1,(0,255,0),2)
     cv2.imshow("Contoured image", image_gray)
-    cv2.waitKey(0)
+    cv2.waitkey(0)
     # Now lets find the rectangle coordinates around the contours
     cnts=sorted([(c, cv2.boundingRect(c) [0]) for c in cnts], key=lambda x:x[1])
     #print cnts[0]

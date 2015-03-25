@@ -9,17 +9,16 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 '''
-About: This code snippet is the logistic regression with gradient descent without regularization, 
-       Given the training data set this code snippet find the best parameter or the weights (thetas) for each
+About: This code snippet is the logistic regression without regularization, Given the training data set this code snippet find the best parameter or the weights (thetas) for each
        feature of the data set. This is operated for 2nd degree polynomial.
 '''
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def cal_feature_scalling(x,n,mn,sd):
-    for mnsd in range (1,n):  # We dont feature scale the first column column because its 1 . the range would go from 1 to n-1 
-                              # 1,n-1 because in numpy array the first column is 1, second is 2 and so on
+    for mnsd in range (1,n):    # 1,n-1 because in numpy array the first column is 1, second is 2 and so on
         x[:,mnsd]=np.divide(np.subtract(x[:,mnsd] , mn[mnsd]), sd[mnsd])
 
     return x
@@ -38,7 +37,6 @@ def cal_cost(h, y, m):
 def cal_grad(x,y,h,m):
     error =h-y
     grad=  (np.dot(np.transpose(x), error))/m # For matrix multiplication x transpose is [3*80] and y is [80*1]
-    #print np.diag(np.array(h,dtype="float64"))
     return grad
 
 
@@ -52,11 +50,11 @@ def main_call(x,y,alpha, max_iter,m,n):
         grad=cal_grad(x,y,h,m)
         theta=theta-(alpha*grad)
 
-    return j_theta, theta#,h
+    return j_theta, theta
 
 
 
-#main_call(x,y,0.3,100,)
+
 '''
 x=  np.array([[5.5500000e+01,   6.9500000e+01],
    [4.1000000e+01,   8.1500000e+01],
