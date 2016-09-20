@@ -2,20 +2,14 @@
 The code is an approach to Detect licence plate of Indian vehicles with extensive use of Machine Learning Algorithms and Image Processing
 The Data-set is however not provided due to security reasons. 
 
-The code is quite straight forward, 
+Below are list of important functions.
 
-c_create_dataset:
-The create feature method of the package c_create_dataset accepts the path array of the folder that contains the licence plate images and random images that doesnot pertain to licence plates.
-The create feature method therefore creates the complete dataset with HOG features labeling the licence plate images as 1 and non-licence plate images as 0
-Note: The licence plate images are cropped images, only the licence plate part not the whole image.
+Bld_FeatureCrps:
+This file does the feature extraction from the license plate images. The paths of stashed images (both license plate and non-license plate) are provided, the code extractes the features from the images and store each image as a set of feature in the disk with their respective label. In short the code attempts to create the training sample.
+Note: The training and test sample of licence plate images are manually cropped images, only the licence plate part not the whole image of the vehicle.
 
-d_train_n_pred_licenceplayte:
-This package perform the complete algorithm by calling the methods of b_Logistic_regression. 
-It performs the algorithm on the training set finds the optimal parameter theta and use the theta value on the test data set. 
+Bld_Model:
+This file contains set of models on which the training data is trained. The trained models are then stored in the disk for the crossvaldation and test data.
 
-e_image_segment_into_contours:
-It takes all the images which contains a licence plate one by one and finds all the possible contours.
-After finding the contours it calls the d_train_n_pred_licenceplate package to find the contoured image that has the licence plate.
-
-f_main_function:
-This is the main function it makes call to method of other packages and does the entire job.
+Classfy:
+This module takes input an image, use set of morphological operation, extracts all the contours from an image and then classifies all the rectangles. The rectangle classified with a high threshold are identified as license plate 
