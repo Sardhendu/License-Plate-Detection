@@ -6,9 +6,10 @@ Created on Thu Mar 19 14:40:18 2015
 """
 
 import copy
-import cPickle
+from six.moves import cPickle as pickle 
 import numpy as np
 from sklearn.svm import SVC
+import Configuration
 
 from sklearn.svm import LinearSVC
 from Bld_FeatureCrps import CrtFeatures
@@ -107,8 +108,8 @@ class Models():
             # run_linear_SVM(features, labels):
             model = LinearSVC(random_state=42)
             model.fit(features, labels)
-            f = open(self.conf["Linear_SVC_dir"] , "w")
-            f.write(cPickle.dumps(model))
+            f = open(self.conf["Linear_SVC_dir"] , "wb")
+            pickle.dumps(model, f)
             f.close()
 
         elif self.type == 'rbf':
@@ -121,37 +122,7 @@ class Models():
                     clf = SVC(kernel=kernel, C=c, gamma=gamma)
                     classifier = clf.fit(features,labels)
                     #print classifier                                                                                                                         
-                    f = open(self.conf["SVM_RFB_dir"]%(int(c),int(gamma)) , "w")
-                    f.write(cPickle.dumps(classifier))
+                    f = open(self.conf["SVM_RFB_dir"]%(int(c),int(gamma)) , "wb")
+                    pickle.dump(classifier, f)
                     f.close()
-
-
-
-
-
-
-
-                    
-                    #classifier,test=test_classify=test_main(path_test) 
-                    #pred=classify_new_instance(image_to_classify_path)
-
-    #     elif type = 'rbf_coded':
-    #         '''   
-    #             Note:
-    #             The more the sigma is the less the gamma will be
-    #         '''
-    #         sigma = self.sigma
-    #         max_iter = self.max_iter
-    #         alpha = self.alpha
-    #         self.c = c
-    #         features_krnl_cnvrt,j_theta, theta = SvmModel().main_call(sigma, features, labels, max_iter, alpha, c)
-    #         np.savetxt(self.conf["Data_feature_KernelCnvtd_dir"], features_krnl_cnvrt, delimiter=",")
-    #         np.savetxt(self.conf["Theta_val_dir"], theta, delimiter=",")
-    #     else:
-    #         print 'raise exception'
-        
-    # def __main__():
-    #     features_krnl_cnvrt, j_theta, theta= run_rbf_coded_SVM(features,labels)
-        
-
 
