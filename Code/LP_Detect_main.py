@@ -1,4 +1,4 @@
-
+from __future__ import division
 
 import os, glob
 import numpy as np
@@ -13,6 +13,10 @@ from Classify import Classify
 from Evaluate_models import Eval
 from BldModel import SvmModel, Models
 from Bld_FeatureCrps import CrtFeatures
+
+from shutil import copyfile
+
+
 
 conf = Configuration.get_datamodel_storage_path()
 
@@ -74,6 +78,7 @@ def run_cross_valid():
 	valid_path_LP = [conf['Valid_data1_dir']]
 	valid_path_non_LP = [conf['Valid_data2_dir']]
 	for no, path in enumerate([valid_path_LP, valid_path_non_LP]):
+		print ('Running classification no validation file %s:  '%path)
 		prediction_dict = valid(inp_path=path, model='rbf')
 		for model, pred in prediction_dict.items():
 			if no==0:
@@ -83,10 +88,10 @@ def run_cross_valid():
 			accuracy=accuracy_score(labels_valid, pred)
 			print ('The accuracy of model %s is: '%model, accuracy)
 
-# run_cross_valid()
 
 
-# ####################
+
+# ####################`
 # #==============================================================================
 # # 4: Find the Number plates of the vehicle
 # #==============================================================================
@@ -94,11 +99,10 @@ def run_cross_valid():
 
 # For classification let us use models one after another.
 # For the cross validation data set the best model was. model_svm_rbf_10_1
-model_path = os.path.dirname(os.path.abspath(conf["SVM_RFB_dir"]))
-print (model_path) 
-model = pickle.load(open(model_path+"/model_svm_rbf_10_1.pickle", 'rb')) 
-def Extract_lisenceplate():
-	for image_inp in glob.glob(conf['Indian_cars']):
+
+
+def Extract_lisenceplate(model, license_plate_path):
+	for num, image_inp in enumerate(glob.glob(conf['Indian_cars']) + glob.glob(conf['Foreign_cars'])):
 		print (image_inp)
 		image_to_classify = cv2.imread(image_inp)
 		# cv2.imshow('image',image_to_classify)
@@ -106,11 +110,36 @@ def Extract_lisenceplate():
 		# cv2.destroyAllWindows()
 		image_resized = Tools.resize(image_to_classify, height=500)
 		pred_dict = Classify().classify_new_instance(image_resized,model)
-		print (pred)
-		break
+		# print (pred_dict)
+		
 		# print (model)
-		# for i in range(0,len(pred)):
-		#     if pred[i][0]==1:
-		#         print pred[i]
+		probs = []
+		for image_fname, prob in pred_dict.items():#range(0,len(pred_dict)):
+		    probs.append(prob[1])
+		        # print (image_fname)
+		probs = np.array(probs)
+		ind = np.where(probs == np.max(probs))[0]
 
-Extract_lisenceplate()
+		print (ind)
+		
+		for filename in np.array(list(pred_dict.keys()))[ind]:
+			copyfile(conf['Regions_of_Intrest']+filename, license_plate_path+filename.split(".")[0]+"_"+str(num)+".jpg")
+		# break
+
+
+
+
+__main__ = True
+
+if __main__:
+
+	model_path = os.path.dirname(os.path.abspath(conf["SVM_RFB_dir"]))
+	license_plate_path = conf["Classified_license_plates"]
+	model = pickle.load(open(model_path+"/model_svm_rbf_1_1.pickle", 'rb')) 
+	# print (license_plate_path)
+
+
+	create_feature_matrix()
+	train_model()
+	run_cross_valid()
+	Extract_lisenceplate(model, license_plate_path)

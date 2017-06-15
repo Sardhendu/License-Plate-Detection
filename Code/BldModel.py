@@ -4,6 +4,7 @@ Created on Thu Mar 19 14:40:18 2015
 
 @author: Sardhendu_Mishra
 """
+from __future__ import division
 
 import copy
 from six.moves import cPickle as pickle 
@@ -119,7 +120,7 @@ class Models():
 
             for c in c_range:
                 for gamma in gamma_range:
-                    clf = SVC(kernel=kernel, C=c, gamma=gamma)
+                    clf = SVC(kernel=kernel, C=c, gamma=gamma, probability=True)
                     classifier = clf.fit(features,labels)
                     #print classifier                                                                                                                         
                     f = open(self.conf["SVM_RFB_dir"]%(int(c),int(gamma)) , "wb")

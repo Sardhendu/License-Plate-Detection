@@ -5,6 +5,7 @@ Created on Sat Mar 21 19:08:39 2015
 @author: Sardhendu_Mishra
 """
 import cv2
+from collections import OrderedDict
 import Configuration
 from Bld_FeatureCrps import CrtFeatures
 
@@ -42,7 +43,7 @@ class Classify():
         roi_name_array=[]   
         pred_classify=[]
         pred_image_name=[]
-        pred_classify_all= {}
+        pred_classify_all= OrderedDict()
         #roi_probability_array=[]
         count=0
         for (c,_) in contours:
@@ -52,11 +53,11 @@ class Classify():
                 roi_name_array.append(region_of_interest)   
                 # roi stands for region of interest, we store the array of each image in an stack array to later extract the licence plate from given index
                 # We save the region of interest into a folder, retrive it and then classify it             
-                cv2.imwrite(self.conf['Regions_of_Intrest']+"roi_images%04i.jpg" %count, region_of_interest)             
+                cv2.imwrite(self.conf['Regions_of_Intrest']+"roi_images%04i.jpg" %count, region_of_interest) 
                 path_classify_roi = [self.conf['Regions_of_Intrest']+"roi_images%04i.jpg" %count]
                 # We now create feature set for the Region of Interest as we did formt he training set
-                roi_feature_array, _ = CrtFeatures().create_features(path_classify_roi)                   
-                pred_classify = classifier.predict(roi_feature_array) # path_classify will basically contain one image
+                roi_feature_array, _ = CrtFeatures().create_features(path_classify_roi) 
+                pred_classify = classifier.predict_proba(roi_feature_array) # path_classify will basically contain one image
                 pred_image_name=("roi_images%04i.jpg" %count)
                 pred_classify_all[pred_image_name] = pred_classify[0]
                 count += 1

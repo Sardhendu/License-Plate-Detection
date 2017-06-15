@@ -21,7 +21,7 @@ def get_config_dir():
 def get_config():
     Config = ConfigParser.ConfigParser()   
     Config.read(get_config_dir())   
-    print ('All the configuration are: ', Config.sections())
+    # print ('All the configuration are: ', Config.sections())
     return Config
 
 
@@ -30,7 +30,7 @@ def get_datamodel_storage_path():
     curr_dir = os.path.abspath(os.path.join(curr_dir, os.pardir))
     curr_dir = os.path.abspath(os.path.join(curr_dir, os.pardir))
     curr_dir = os.path.abspath(os.path.join(curr_dir, os.pardir))
-    print (curr_dir)
+    # print (curr_dir)
 
     conf = get_config()
 
@@ -51,6 +51,7 @@ def get_datamodel_storage_path():
     config_settings["Models"] = curr_dir+'/'+conf.get("Models", "models")
 
     config_settings["Regions_of_Intrest"] = curr_dir+'/'+conf.get("Contored_images", "Regions_of_Intrest")
+    config_settings["Classified_license_plates"] = curr_dir+'/'+conf.get("Classified_License_plates", "classified_license_plate")
 
     config_settings["Indian_cars"] = curr_dir+'/'+conf.get("Images_to_classify","Indian_cars")
     config_settings["Foreign_cars"] = curr_dir+'/'+conf.get("Images_to_classify","Foreign_cars")

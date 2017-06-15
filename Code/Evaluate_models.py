@@ -1,9 +1,14 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Mar 21 19:07:10 2015
+#-------------------------------------------------------------------------------
+# Name:        module1
+# Purpose:
+#
+# Author:      Sardhendu_Mishra
+#
+# Created:     15/02/2015
+# Copyright:   (c) Sardhendu_Mishra 2015
+# Licence:     <your licence>
+#-------------------------------------------------------------------------------
 
-@author: Sardhendu_Mishra
-"""
 import os
 import glob
 import numpy as np
