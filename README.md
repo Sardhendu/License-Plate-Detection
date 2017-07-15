@@ -1,15 +1,32 @@
 # Licence-Plate-Detection
-The code is an approach to Detect licence plate of Indian vehicles with extensive use of Machine Learning Algorithms and Image Processing
-The Data-set is however not provided due to security reasons. 
+The code is an approach to Detect licence plate of vehicles with use of Machine Learning Algorithms and Image Processing techniques
 
-Below are list of important functions.
+A sample of Dataset is provided: Look under the directory folder to get a sense of the dataset.
 
-Bld_FeatureCrps:
-This file does the feature extraction from the license plate images. The paths of stashed images (both license plate and non-license plate) are provided, the code extractes the features from the images and store each image as a set of feature in the disk with their respective label. In short the code attempts to create the training sample.
-Note: The training and test sample of licence plate images are manually cropped images, only the licence plate part not the whole image of the vehicle.
 
-Bld_Model:
-This file contains set of models on which the training data is trained. The trained models are then stored in the disk for the crossvaldation and test data.
-
-Classfy:
-This module takes input an image, use set of morphological operation, extracts all the contours from an image and then classifies all the rectangles. The rectangle classified with a high threshold are identified as license plate 
+* You would want to start with the module **LP_Detect_main.py**. Let go one by one 
+ 
+   #### create_feature_matrix: 
+   * Calls a function of the class **CrtFeatures**: inside the module **Bld_FeatureCrps**. This module is aimed to extract features from a license plate/non license plate and store the features into disk (Training Features). It basically uses two directories 
+        * Train_data1 : Manually extracted license plates (cropped form vehicles image).
+        * Train_data2 : Some random images (Non License plate)
+     -- see config-local.conf file to get to know the directories name
+     
+   #### train_model: 
+   * Makes call to function of class **Model** inside module **BldModel**. Now that we have extracted training features as discussed above, we would want algorithm to learn the features of a license plate and a non-license plate. This is achieved by train_model.
+        * It fetches the saved features and the corresponding label (license_plate or non-license plate) and sends it to the SVM model.
+        * It also stores the learned model into the disk so that while cross validation and testing we can invoke the model and classify. 
+             
+   #### valid and run_cross_valid:
+   * These function makes use of the above modules to extract features of a manually cropped license plate/non-license plate and use the saved model to classify the images.
+   
+   #### Extract_lisenceplate:
+   * This is the most important function that is provided with the actual directory where your images (vehicles/non-vehicles) are provided. 
+      * It extracts all contours (rectangles, circles polygon defined with intense edges), applies some morphological operations and
+      * Then the extracted contours are send to the feature extractor where features for each contours are extracted.
+      * These features are then classified as license-plate and non-license plate.
+      * A high probability indicates a contour to be the license plate. 
+      * Finally the contoured classified as a license plates (high probability) are stashed in a directory.
+      
+      -- Look at the "config-local.conf" to get a understanding of the directory name.
+  
