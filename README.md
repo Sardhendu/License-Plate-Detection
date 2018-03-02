@@ -40,14 +40,11 @@ directory. Then manually go an select the license plates. Below are some images 
 
 ##### License Plates:
 
-<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Licence
--Plate/yes%20(31).jpg" width="200" height="100"> <img src="https://github
-.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Licence-Plate/yes%20(32).jpg" 
-width="200" height="100"> 
+<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Licence-Plate/yes%20(33).jpg" width="200" height="100"> <img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Licence-Plate/yes%20(32).jpg" width="200" height="100"> 
 
 ##### Non License Plates
 
-<img src="https://github.com/Sardhendu/License-Plate-Detection/tree/master/DataSet/Data-Files/images_train/Not-Licence-Plate/no (7).jpg" width="200" height="100"> <img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Not-Licence-Plate/no%20(8).jpg" width="200" height="100"> 
+<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Not-Licence-Plate/no%20(6).jpg" width="200" height="100"> <img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Not-Licence-Plate/no%20(8).jpg" width="200" height="100"> 
 
 
 #### Test:
