@@ -4,7 +4,7 @@ The code is an approach to Detect licence plate of vehicles with use of Machine 
 
 ## Get Started:
 
-* You would want to start with the module **LP_Detect_main.py**. Let go one by one 
+* You would want to start with the module **LP_Detect_main.py**. Lets go one by one 
  
    #### create_feature_matrix: 
    * Calls a function of the class **CrtFeatures**: inside the module **Bld_FeatureCrps**. This module is aimed to extract features from a license plate/non license plate and store the features into disk (Training Features). It basically uses two directories 
@@ -53,23 +53,14 @@ extracted all the contours and then classify each contours as a license plate or
 
 
 ##### Test Images:
-<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify
-/Foreign_cars/image_2_classify (9).jpg" width="400" height="300"> <img src="https://github
-.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/Foreign_cars/image_2_classify (4).jpg" 
+<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/Foreign_cars/image_2_classify%20(9).jpg" width="400" height="300"> <img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/Foreign_cars/image_2_classify%20(4).jpg" 
 width="400" height="300"> 
 
 ##### Contours Extracted (Region of Interest)  
-<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/contoured_images_roi/roi_images0038.jpg" width="200" height="100"> <img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/contoured_images_roi/roi_images0036.jpg" 
-width="200" height="100"> <img src="https://github
-.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify
-/contoured_images_roi/roi_images0041.jpg" width="200" height="100">
+<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/contoured_images_roi/roi_images0038.jpg" width="200" height="100"> <img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/contoured_images_roi/roi_images0039.jpg" width="200" height="100"> <img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/contoured_images_roi/roi_images0041.jpg" width="200" height="100">
 
 ##### Region of interest classified as License Plate
-<img src="https://github
-.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify
-/contoured_images_roi/roi_images0041.jpg" width="200" height="100"> <img src="https://github
-.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify
-/contoured_images_roi/roi_images0036_28" width="200" height="100">
+<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/extracted_licenceplate_image/roi_images0042_33.jpg" width="200" height="100"> <img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/extracted_licenceplate_image/roi_images0036_28.jpg" width="200" height="100">
 
 A sample of Dataset is provided: Look under the directory folder "/DataSet" to get a sense of the dataset.
 
