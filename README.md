@@ -2,56 +2,6 @@
 The code is an approach to Detect licence plate of vehicles with use of Machine Learning Algorithms and Image Processing techniques
 
 
-
-## Snapshot of the process
-
-#### Train: 
-Training data is manually created by taking a vehicle's image and cropping out the license plate image. Another 
-simple way would be to extract all possible contours form the image (look at /Code/Classify.py) and save them in a 
-directory. Then manually go an select the license plates. Below are some images of License plates used for Training.
-
-##### License Plates:
-
-<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Licence
--Plate/yes (31).jpg" width="200" height="100"> <img src="https://github
-.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Licence-Plate/yes (32).jpg" 
-width="200" height="100"> 
-
-##### Non License Plates
-
-<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Not-Licence-Plate/no (7).jpg" width="200" height="100"> <img src="https://github
-.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Not-Licence-Plate/no (8).jpg" 
-width="200" height="100"> 
-
-
-#### Test:
-For Testing, an image containing a vehicle image with its license plate was provides. Given this image we first 
-extracted all the contours and then classify each contours as a license plate or not a license plate.
-
-
-##### Test Images:
-<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify
-/Foreign_cars/image_2_classify (9).jpg" width="400" height="300"> <img src="https://github
-.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/Foreign_cars/image_2_classify (4).jpg" 
-width="400" height="300"> 
-
-##### Contours Extracted (Region of Interest)  
-<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/contoured_images_roi/roi_images0038.jpg" width="200" height="100"> <img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/contoured_images_roi/roi_images0036.jpg" 
-width="200" height="100"> <img src="https://github
-.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify
-/contoured_images_roi/roi_images0041.jpg" width="200" height="100">
-
-##### Region of interest classified as License Plate
-<img src="https://github
-.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify
-/contoured_images_roi/roi_images0041.jpg" width="200" height="100"> <img src="https://github
-.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify
-/contoured_images_roi/roi_images0036_28" width="200" height="100">
-
-A sample of Dataset is provided: Look under the directory folder "/DataSet" to get a sense of the dataset.
-
-
-
 ## Get Started:
 
 * You would want to start with the module **LP_Detect_main.py**. Let go one by one 
@@ -81,6 +31,50 @@ A sample of Dataset is provided: Look under the directory folder "/DataSet" to g
       -- Look at the "config-local.conf" to get a understanding of the directory name.
       
       
-      
+## Snapshot of the process
+
+#### Train: 
+Training data is manually created by taking a vehicle's image and cropping out the license plate image. Another 
+simple way would be to extract all possible contours form the image (look at /Code/Classify.py) and save them in a 
+directory. Then manually go an select the license plates. Below are some images of License plates used for Training.
+
+##### License Plates:
+
+<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Licence
+-Plate/yes%20(31).jpg" width="200" height="100"> <img src="https://github
+.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Licence-Plate/yes%20(32).jpg" 
+width="200" height="100"> 
+
+##### Non License Plates
+
+<img src="https://github.com/Sardhendu/License-Plate-Detection/tree/master/DataSet/Data-Files/images_train/Not-Licence-Plate/no (7).jpg" width="200" height="100"> <img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_train/Not-Licence-Plate/no%20(8).jpg" width="200" height="100"> 
+
+
+#### Test:
+For Testing, an image containing a vehicle image with its license plate was provides. Given this image we first 
+extracted all the contours and then classify each contours as a license plate or not a license plate.
+
+
+##### Test Images:
+<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify
+/Foreign_cars/image_2_classify (9).jpg" width="400" height="300"> <img src="https://github
+.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/Foreign_cars/image_2_classify (4).jpg" 
+width="400" height="300"> 
+
+##### Contours Extracted (Region of Interest)  
+<img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/contoured_images_roi/roi_images0038.jpg" width="200" height="100"> <img src="https://github.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify/contoured_images_roi/roi_images0036.jpg" 
+width="200" height="100"> <img src="https://github
+.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify
+/contoured_images_roi/roi_images0041.jpg" width="200" height="100">
+
+##### Region of interest classified as License Plate
+<img src="https://github
+.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify
+/contoured_images_roi/roi_images0041.jpg" width="200" height="100"> <img src="https://github
+.com/Sardhendu/License-Plate-Detection/blob/master/DataSet/Data-Files/images_classify
+/contoured_images_roi/roi_images0036_28" width="200" height="100">
+
+A sample of Dataset is provided: Look under the directory folder "/DataSet" to get a sense of the dataset.
+
 
   
