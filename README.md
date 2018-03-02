@@ -22,9 +22,7 @@ The code is an approach to Detect licence plate of vehicles with use of Machine 
    
    #### Extract_lisenceplate:
    * This is the most important function that is provided with the actual directory where your images (vehicles/non-vehicles) are provided. 
-      * It extracts all region of interests i.e contours (rectangles, circles polygon defined with intense edges), 
-      applies some morphological
-       operations. 
+      * It extracts all region of interests i.e contours (rectangles, circles polygon defined with intense edges). 
       * Then the region of interest (roi) are send to the feature extractor where features for each roi are 
       extracted.
       * These features are then classified as license-plate and non-license plate using Support Vector Machines.
