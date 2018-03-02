@@ -13,7 +13,7 @@ The code is an approach to Detect licence plate of vehicles with use of Machine 
      -- see config-local.conf file to get to know the directories name
      
    #### train_model: 
-   * Makes call to function of class **Model** inside module **BldModel**. Now that we have extracted training features as discussed above, we would want algorithm to learn the features of a license plate and a non-license plate. This is achieved by train_model.
+   * Makes call to function of class **Model** inside module **BldModel**. Now that we have extracted training features as discussed above, we would want the algorithm to learn the features of a license plate and a non-license plate. This is achieved by train_model.
         * It fetches the saved features and the corresponding label (license_plate or non-license plate) and sends it to the SVM model.
         * It also stores the learned model into the disk so that while cross validation and testing we can invoke the model and classify. 
              
@@ -22,11 +22,15 @@ The code is an approach to Detect licence plate of vehicles with use of Machine 
    
    #### Extract_lisenceplate:
    * This is the most important function that is provided with the actual directory where your images (vehicles/non-vehicles) are provided. 
-      * It extracts all contours (rectangles, circles polygon defined with intense edges), applies some morphological operations and
-      * Then the extracted contours are send to the feature extractor where features for each contours are extracted.
-      * These features are then classified as license-plate and non-license plate.
+      * It extracts all region of interests i.e contours (rectangles, circles polygon defined with intense edges), 
+      applies some morphological
+       operations. 
+      * Then the region of interest (roi) are send to the feature extractor where features for each roi are 
+      extracted.
+      * These features are then classified as license-plate and non-license plate using Support Vector Machines.
       * A high probability indicates a contour to be the license plate. 
-      * Finally the contoured classified as a license plates (high probability) are stashed in a directory.
+      * Finally the region of interest (roi) classified as a license plates (high probability) are stashed in a 
+      directory.
       
       -- Look at the "config-local.conf" to get a understanding of the directory name.
       
