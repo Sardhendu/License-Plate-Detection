@@ -8,8 +8,8 @@ The code is an approach to Detect licence plate of vehicles with use of Machine 
  
    ### Create Features [HERE](https://github.com/Sardhendu/License-Plate-Detection/blob/master/Code/Bld_FeatureCrps.py): 
    * This module is aimed to extract features from a license plate/non license plate and store the features into disk (Training Features). 
-   * One could manually create a small dataset by manually cropping out License plates from vehicle images and small set of random images (non-license plates)
-   * The module employs **Histogram of Oriented Gradients (HOG)** as a features extraction technique. In a nutshell, given an image (say 32x32x3) **HOG** would create a feature vector with for any Machine Leaning model to consume. You could even experiment with simple features extraction technique such as **Edges 32x32 = 1024x1**, **Flattening the image (32x32x3) into 3072x1** and use these vectors as an input to Machine learning Models.
+   * One could manually create a small dataset by cropping out License plates from vehicle images and small set of random images (non-license plates)
+   * The module employs **Histogram of Oriented Gradients (HOG)** as a features extraction technique. In a nutshell, given an image (say 32x32x3) **HOG** would create a feature vector for any Machine Leaning model to consume. You could even experiment with simple features extraction technique such as **Edges 32x32 = 1024x1**, **Flattening the image (32x32x3) into 3072x1** and use these vectors as an input to Machine learning Models.
    
        #### Module
        * Gets license plates and non-license plate from respective directories, extract features and stores the feature vectors into the disk
@@ -17,7 +17,7 @@ The code is an approach to Detect licence plate of vehicles with use of Machine 
             * Sample Non-License plate data can be found [HERE](https://github.com/Sardhendu/License-Plate-Detection/tree/master/DataSet/Data-Files/images_train/Not-Licence-Plate)
      
    ### Train Model [HERE](https://github.com/Sardhendu/License-Plate-Detection/blob/master/Code/BldModel.py): 
-   * From step 1 we already have our features, now all we have to do is send this features to a machine learning model to learn patterns to distinguish License plates and Non-License plates.
+   * From step 1 we already have our features, now all we have to do is send these features to a machine learning model to learn patterns to distinguish License plates and Non-License plates.
    * In our case, the data is not very big, so we use **Support Vector Machines** as our machine learning model. SVM's are awesome with marginal data size and are robust to overfitting.
    
         ##### Module:
@@ -30,13 +30,13 @@ The code is an approach to Detect licence plate of vehicles with use of Machine 
    * **Note** here we do not provide the whole image, but use manually extract license plates and random images to get a sense of the model performance
    
    ### Extract License plate [HERE](https://github.com/Sardhendu/License-Plate-Detection/blob/master/Code/LP_Detect_main.py):
-   * We have every thing set up, and a good model too. Now the aim is to extract all the license plate given a image containing vehicle. 
-   * We know that a license plate has visible edges. Here, we extract all region of interests **(ROI)** from a image, i.e (rectangles, circles polygon defined with intense edges).
+   * We have every thing set up, and a good model too. Now the aim is to extract all the license plate given a image containing vehicles. 
+   * We know that a license plate has visible edges. So, we extract all region of interests **(ROI)** from a image, i.e (rectangles, circles polygon defined with intense edges).
    * We know that license plate are rectangular in shape, so we reshape/extend the **ROI** as rectangles. Note for a given image we can have 100's or **ROI** of which only 2-3 would be license plate. So we have to classify all the **ROI** using our **SVM** model.   
    * All the **ROI's** are send to the feature extractor module.
-  * These features are then send to the **SVM** classifier for classification.
+  * The generated features for each **ROI** are then send to the **SVM** classifier for classification.
   * A high probability (say >90%) indicates a **ROI** to be the license plate. 
-  * Finally we stash the **ROI** that have high probability of being a license plate into the disk.
+  * Finally we stash the **ROI** that have high probability of being a license plate into the disk for manual examination.
       
   **Look HERE** to get a sense of the directory name, so that you can run the model for yourself.
       
@@ -58,8 +58,8 @@ directory. Then manually go an select the license plates. Below are some images 
 
 
 #### Test:
-For Testing, an image containing a vehicle image with its license plate was provides. Given this image we first 
-extracted all the contours and then classify each contours as a license plate or not a license plate.
+For testing, an image containing a vehicle image with its license plate was provided. Given the image we first 
+extracted all the **ROI's** and then classify each **ROI's** as a license plate or not a license plate.
 
 
 ##### Test Images:
