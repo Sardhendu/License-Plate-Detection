@@ -11,19 +11,19 @@ The code is an approach to Detect licence plate of vehicles with use of Machine 
    * One could manually create a small dataset by manually cropping out License plates from vehicle images and small set of random images (non-license plates)
    * The module employs **Histogram of Oriented Gradients (HOG)** as a features extraction technique. In a nutshell, given an image (say 32x32x3) **HOG** would create a feature vector with for any Machine Leaning model to consume. You could even experiment with simple features extraction technique such as **Edges 32x32 = 1024x1**, **Flattening the image (32x32x3) into 3072x1** and use these vectors as an input to Machine learning Models.
    
-   #### Module
-   * Gets license plates and non-license plate from respective directories, extract features and stores the feature vectors into the disk
-        * Sample License Plate data can be found [HERE](https://github.com/Sardhendu/License-Plate-Detection/tree/master/DataSet/Data-Files/images_train/Licence-Plate)
-        * Sample Non-License plate data can be found [HERE](https://github.com/Sardhendu/License-Plate-Detection/tree/master/DataSet/Data-Files/images_train/Not-Licence-Plate)
+       #### Module
+       * Gets license plates and non-license plate from respective directories, extract features and stores the feature vectors into the disk
+            * Sample License Plate data can be found [HERE](https://github.com/Sardhendu/License-Plate-Detection/tree/master/DataSet/Data-Files/images_train/Licence-Plate)
+            * Sample Non-License plate data can be found [HERE](https://github.com/Sardhendu/License-Plate-Detection/tree/master/DataSet/Data-Files/images_train/Not-Licence-Plate)
      
    ### Train Model [HERE](https://github.com/Sardhendu/License-Plate-Detection/blob/master/Code/BldModel.py): 
    * From step 1 we already have our features, now all we have to do is send this features to a machine learning model to learn patterns to distinguish License plates and Non-License plates.
    * In our case, the data is not very big, so we use **Support Vector Machines** as our machine learning model. SVM's are awesome with marginal data size and are robust to overfitting.
    
-    ##### Module:
-    * Fetches the saved features and the corresponding label (license_plate or non-license plate) and sends it to the SVM model.
-    * Stores the learned model into the disk to be used while cross validation and testing. 
-        * A CSV file containing the features can be found [HERE](https://github.com/Sardhendu/License-Plate-Detection/tree/master/DataSet/Feature-Model)
+        ##### Module:
+        * Fetches the saved features and the corresponding label (license_plate or non-license plate) and sends it to the SVM model.
+        * Stores the learned model into the disk to be used while cross validation and testing. 
+            * A CSV file containing the features can be found [HERE](https://github.com/Sardhendu/License-Plate-Detection/tree/master/DataSet/Feature-Model)
              
    ### Cross Validation [HERE](https://github.com/Sardhendu/License-Plate-Detection/blob/master/Code/LP_Detect_main.py):
    * Now that we have a model in place we would want to validate the model to predict if a rectangular region is license plate or non-license plate
