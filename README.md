@@ -1,5 +1,5 @@
 # Licence-Plate-Detection
-The code is an approach to Detect licence plate of vehicles with use of Machine Learning Algorithms and Image Processing techniques
+The code is an approach to Detect/Extract licence plate of vehicles use of Machine Learning  and Image Processing techniques
 
 
 ## Get Started:
