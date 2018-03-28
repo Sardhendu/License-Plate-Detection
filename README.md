@@ -1,24 +1,25 @@
 # Licence-Plate-Detection
-The code is an approach to Detect/Extract licence plate of vehicles use of Machine Learning  and Image Processing techniques
+This project aims to utilize Machine Learning and Image Processing techniques to detect/extract license plates of vehicle given an image. 
 
 
-## Get Started:
+## Modules:
 
 * You would want to start with the module **LP_Detect_main.py**. Lets go one by one 
  
-   ### [Create Features](https://github.com/Sardhendu/License-Plate-Detection/blob/master/Code/Bld_FeatureCrps.py): 
-   * This module is aimed to extract features from a license plate/non license plate and store the features into disk (Training Features). 
-   * One could manually create a small dataset by cropping out License plates from vehicle images and small set of random images (non-license plates)
-   * The module employs **Histogram of Oriented Gradients (HOG)** as a features extraction technique. In a nutshell, given an image (say 32x32x3) **HOG** would create a feature vector for any Machine Leaning model to consume. You could even experiment with simple features extraction technique such as **Edges 32x32 = 1024x1**, **Flattening the image (32x32x3) into 3072x1** and use these vectors as an input to Machine learning Models.
+   ### [Data Preparation and Feature Extraction](https://github.com/Sardhendu/License-Plate-Detection/blob/master/Code/Bld_FeatureCrps.py): 
+   * This module is aimed to extract features from a license plate/non license plate and store them in the disk (Training Features). 
+   * Here, we manually create a small dataset by cropping out License plates from vehicle images and small set of random images (non-license plates).
+   * Usual image processing techniques such as thresholding, standarization, erosion etc. are applied to the images.
+   * We employ **Histogram of Oriented Gradients (HOG)** as a features extraction technique. In a nutshell, given an image (say 32x32x3) **HOG** would create a feature vector which can be consumed by a Machine Learning model. You could even experiment with simple features extraction technique such as **Edges 32x32 = 1024x1**, **Flattening the image (32x32x3) into 3072x1** and use these vectors as an input to Machine learning Models.
    
        #### Module
        * Gets license plates and non-license plate from respective directories, extract features and stores the feature vectors into the disk
-            * [Sample License Plate data can be found](https://github.com/Sardhendu/License-Plate-Detection/tree/master/DataSet/Data-Files/images_train/Licence-Plate)
-            * [Sample Non-License plate data can be found](https://github.com/Sardhendu/License-Plate-Detection/tree/master/DataSet/Data-Files/images_train/Not-Licence-Plate)
+            * [Sample License Plate data](https://github.com/Sardhendu/License-Plate-Detection/tree/master/DataSet/Data-Files/images_train/Licence-Plate)
+            * [Sample Non-License plate data](https://github.com/Sardhendu/License-Plate-Detection/tree/master/DataSet/Data-Files/images_train/Not-Licence-Plate)
      
    ### [Train Model](https://github.com/Sardhendu/License-Plate-Detection/blob/master/Code/BldModel.py): 
-   * From step 1 we already have our features, now all we have to do is send these features to a machine learning model to learn patterns to distinguish License plates and Non-License plates.
-   * In our case, the data is not very big, so we use **Support Vector Machines** as our machine learning model. SVM's are awesome with marginal data size and are robust to overfitting.
+   * From step 1 we already have our features, now all we have to do is send these features to a machine learning model to learn a reasonable boundary to separate License plates and Non-License plates.
+   * In our case, the data is not very big, so we use **Support Vector Machines** as our machine learning model. SVM's with RBF kernel performs excellent with small data size and are robust to overfitting.
    
         ##### Module:
         * Fetches the saved features and the corresponding label (license_plate or non-license plate) and sends it to the SVM model.
@@ -30,9 +31,9 @@ The code is an approach to Detect/Extract licence plate of vehicles use of Machi
    * **Note** here we do not provide the whole image, but use manually extract license plates and random images to get a sense of the model performance
    
    ### [Extract License plate](https://github.com/Sardhendu/License-Plate-Detection/blob/master/Code/LP_Detect_main.py):
-   * We have every thing set up, and a good model too. Now the aim is to extract all the license plate given a image containing vehicles. 
-   * We know that a license plate has visible edges. So, we extract all region of interests **(ROI)** from a image, i.e (rectangles, circles polygon defined with intense edges).
-   * We know that license plate are rectangular in shape, so we reshape/extend the **ROI** as rectangles. Note for a given image we can have 100's or **ROI** of which only 2-3 would be license plate. So we have to classify all the **ROI** using our **SVM** model.   
+   * We have every thing set up. We have a good model too and have validated it against cross validation dataset. Now the aim is to extract all the license plate given a image containing vehicles. 
+   * We know that a license plate has visible edges. So, we extract all contours or region of interests **(ROI)** from a image, i.e (rectangles, circles polygon defined with intense edges).
+   * We know that license plate are rectangular in shape, so we reshape/extend the **ROI** as rectangles. Note, for a given image we can have 100's or **ROI** of which only 2-3 would be license plate. So we have to classify all the **ROI** using our **SVM** model.   
    * All the **ROI's** are send to the feature extractor module.
   * The generated features for each **ROI** are then send to the **SVM** classifier for classification.
   * A high probability (say >90%) indicates a **ROI** to be the license plate. 
